@@ -13,9 +13,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Install Selenium Chrome Driver (Ubuntu)
-        if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -yqq chromium-chromedriver && sudo ln -s /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
       - name: Install Selenium Chrome Driver (OSX)
         if: runner.os == 'macOs'
         run: brew cask install chromedriver
