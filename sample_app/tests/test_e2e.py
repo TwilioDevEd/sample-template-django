@@ -9,17 +9,17 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class MySeleniumTests(StaticLiveServerTestCase):
     @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
+    def setUp(cls):
+        super().setUp(cls)
         opts = Options()
         opts.headless = True
         cls.selenium = WebDriver(chrome_options=opts)
         cls.selenium.implicitly_wait(10)
 
     @classmethod
-    def tearDownClass(cls):
+    def tearDown(cls):
         cls.selenium.quit()
-        super().tearDownClass()
+        super().tearDown(cls)
 
     @patch('sample_app.views.Client')
     def test_send_sms_invalid_number(self, fake_twilio):
