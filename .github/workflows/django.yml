@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest, macos-latest]
         python: ["3.6", "3.7", "3.8"]
 
     steps:
@@ -16,11 +16,6 @@ jobs:
       - name: Install Selenium Chrome Driver (OSX)
         if: runner.os == 'macOs'
         run: brew cask install chromedriver
-      - name: Install Selenium Chrome Driver (Windows)
-        if: runner.os == 'Windows'
-        uses: crazy-max/ghaction-chocolatey@v1
-        with:
-          args: install googlechrome chromedriver2
       - name: Setup Python ${{ matrix.python }}
         uses: actions/setup-python@v1
         with:

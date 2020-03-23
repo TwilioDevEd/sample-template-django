@@ -34,7 +34,7 @@ We can render UML diagrams using [Mermaid](https://mermaidjs.github.io/).
 - [Django](https://www.djangoproject.com/) framework version 3
 - User interface to send SMS with bootstrap.
 - End to End UI testing using [Selenium](https://www.selenium.dev/)
-- [Automated CI testing using GitHub Actions](/.github/workflows/django.yml)
+- [Automated CI testing using GitHub Actions](/.github/workflows/django.yml). Windows workflow is not included as there is an issue with the chrome driver and the selenium tests.
 - Linting using [flake8](https://flake8.pycqa.org/en/latest/)
 - Formatting using [Black](https://github.com/psf/black)
 - Project specific environment variables using `.env` files.
