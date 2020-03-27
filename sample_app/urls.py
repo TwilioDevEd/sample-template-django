@@ -6,6 +6,6 @@ app_name = 'sample_app'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('example/', views.example, name='example'),
-    path('send-sms/', views.send_sms, name='send_sms'),
+    path('example', views.example, name='example'),
+    path('send-sms', views.send_sms, name='send_sms'),
 ]

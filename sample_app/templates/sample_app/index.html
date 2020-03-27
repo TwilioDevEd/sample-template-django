@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
-
+{% load static %}
 {% block title %}Sample template index{% endblock %}
 
 {% block content %}
   <h1>{{title}}</h1>
   <p>Welcome to {{title}}</p>
-  <p>Head over to <a href="/sample-app/example"><code>/example</code></a> for some JSON example output </p>
+  <p>Head over to <a href="{% url 'sample-app:example' %}"><code>/example</code></a> for some JSON example output </p>
   <div class="card m-3 mt-5">
     <form class="card-body" id="smsForm" method="POST">
       <h2 class="card-title">Send an SMS</h2>
@@ -28,4 +28,7 @@
       </div>
     </form>
   </div>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{% static 'sample_app/send-sms.js' %}"></script>
 {% endblock %}
