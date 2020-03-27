@@ -12,9 +12,9 @@ This is a GitHub template for creating other [Twilio] sample/template apps. It c
 
 Implementations in other languages:
 
-| .NET | Java | Python | PHP | NodeJS                                                        |
-| :--- | :--- | :----- | :-- | :------------------------------------------------------------ |
-| TBD  | TBD  | TBD    | TBD | [Done](https://github.com/twilio-labs/sample-template-nodejs) |
+| .NET | Java | Ruby | PHP | NodeJS                                                        |
+| :--- | :--- | :--- | :-- | :------------------------------------------------------------ |
+| TBD  | TBD  | TBD  | TBD | [Done](https://github.com/twilio-labs/sample-template-nodejs) |
 
 ### How it works
 

@@ -5,6 +5,7 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.support.wait import WebDriverWait
+from twilio.base.exceptions import TwilioException
 
 
 class MySeleniumTests(StaticLiveServerTestCase):
@@ -21,53 +22,60 @@ class MySeleniumTests(StaticLiveServerTestCase):
         cls.selenium.quit()
         super().tearDownClass()
 
+    def _send_sms(self):
+        phone_number = self.selenium.find_element_by_name('to')
+        phone_number.send_keys('11111')
+        message_body = self.selenium.find_element_by_name('body')
+        message_body.send_keys('Test message')
+        self.selenium.find_element_by_css_selector('button[type="submit"]').click()
+
     @patch('sample_app.views.Client')
     def test_send_sms_invalid_number(self, fake_twilio):
+        # Arrange
         client = Mock()
-        client.messages.create.side_effect = Exception('Boom!')
+        client.messages.create.side_effect = TwilioException('Boom!')
         fake_twilio.return_value = client
         timeout = 2
-        self.selenium.get('%s%s' % (self.live_server_url, '/sample-app/'))
-        send_sms(self.selenium)
+
+        # Act
+        self.selenium.get(self.live_server_url)
+        self._send_sms()
+
         WebDriverWait(self.selenium, timeout).until(
             lambda driver: 'alert-danger'
             in driver.find_element_by_id('dialog').get_attribute('class')
         )
+
+        # Assert
         self.assertEqual(client.messages.create.call_count, 1)
         dialog = self.selenium.find_element_by_id('dialog')
         dialog_title = self.selenium.find_element_by_id('dialogTitle')
         dialog_content = self.selenium.find_element_by_id('dialogContent')
-        assert 'd-none' not in dialog.get_attribute('class')
-        assert 'Error' in dialog_title.text
-        assert 'Failed to send SMS' in dialog_content.text
+        self.assertNotIn('d-none', dialog.get_attribute('class'))
+        self.assertIn('Error', dialog_title.text)
+        self.assertIn('Failed to send SMS', dialog_content.text)
 
     @patch('sample_app.views.Client')
     def test_send_sms_valid_number(self, fake_twilio):
-        class MessageFake:
-            sid = 'asdf123'
-
+        # Arrange
         client = Mock()
-        client.messages.create.return_value = MessageFake()
+        client.messages.create.return_value = Mock(sid='asdf123')
         fake_twilio.return_value = client
         timeout = 2
-        self.selenium.get('%s%s' % (self.live_server_url, '/sample-app/'))
-        send_sms(self.selenium)
+
+        # Act
+        self.selenium.get(self.live_server_url)
+        self._send_sms()
         WebDriverWait(self.selenium, timeout).until(
             lambda driver: 'alert-success'
             in driver.find_element_by_id('dialog').get_attribute('class')
         )
+
+        # Assert
         self.assertEqual(client.messages.create.call_count, 1)
         dialog = self.selenium.find_element_by_id('dialog')
         dialog_title = self.selenium.find_element_by_id('dialogTitle')
         dialog_content = self.selenium.find_element_by_id('dialogContent')
-        assert 'd-none' not in dialog.get_attribute('class')
-        assert 'SMS Sent!' in dialog_title.text
-        assert 'SMS sent to 11111.' in dialog_content.text
-
-
-def send_sms(selenium):
-    phone_number = selenium.find_element_by_name('to')
-    phone_number.send_keys('11111')
-    message_body = selenium.find_element_by_name('body')
-    message_body.send_keys('Test message')
-    selenium.find_element_by_css_selector('button[type="submit"]').click()
+        self.assertNotIn('d-none', dialog.get_attribute('class'))
+        self.assertIn('SMS Sent!', dialog_title.text)
+        self.assertIn('SMS sent to 11111.', dialog_content.text)

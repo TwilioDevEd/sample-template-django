@@ -35,7 +35,7 @@ if (form) {
     evt.preventDefault();
     const headers = new Headers();
     headers.append("Content-Type", "application/json");
-    fetch("/sample-app/send-sms/", {
+    fetch("/send-sms", {
       method: "POST",
       headers,
       body: JSON.stringify({
