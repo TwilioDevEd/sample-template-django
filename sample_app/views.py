@@ -25,7 +25,7 @@ def example(request):
 def send_sms(request):
     body = json.loads(request.body)
     try:
-        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_ACCOUNT_SID)
+        client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
         message = client.messages.create(
             body=body['body'], from_=settings.TWILIO_PHONE_NUMBER, to=body['to']
         )
