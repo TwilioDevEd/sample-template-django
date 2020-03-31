@@ -1,0 +1,27 @@
+{
+  "name": "Django sample template powered by Twilio",
+  "description": "A template for other tutorials using Twilio and Django.",
+  "website": "https://twilio.com",
+  "logo": "https://www.twilio.com/marketing/bundles/marketing/img/favicons/favicon_114.png",
+  "success_url": "/",
+  "addons": [],
+  "keywords": ["django", "python", "twilio"],
+  "env": {
+    "TWILIO_ACCOUNT_SID": {
+      "description": "Your Twilio Account SID. Get a free account at twilio.com/try-twilio",
+      "value": ""
+    },
+    "TWILIO_AUTH_TOKEN": {
+      "description": "Your Twilio Auth Token. You can get it at twilio.com/console",
+      "value": ""
+    },
+    "TWILIO_PHONE_NUMBER": {
+      "description": "The Twilio phone number you want to use to send SMS. Get one in the Twilio Console",
+      "value": "+12345678910"
+    },
+    "SECRET_KEY": {
+      "description": "The secret password which Django will use when starting the app",
+      "value": "SuperSecretKey"
+    }
+  }
+}
