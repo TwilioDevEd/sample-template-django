@@ -123,7 +123,7 @@ After the above requirements have been met:
 
    This will start a development server. It will reload whenever you change any files.
 
-1. Navigate to [http://localhost:8000/sample-app](http://localhost:8000/sample-app)
+1. Navigate to [http://localhost:8000](http://localhost:8000)
 
 That's it!
 
@@ -141,11 +141,15 @@ Additionally to trying out this application locally, you can deploy it to a vari
 
 Please be aware that some of these might charge you for the usage or might make the source code for this application visible to the public. When in doubt research the respective hosting service first.
 
-| Service                           |                                                                                                                                                                                                                           |
-| :-------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [Heroku](https://www.heroku.com/) | [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/TwilioDevEd/sample-template-django/tree/master)                                                            |
-| [Glitch](https://glitch.com)      | [![Remix on Glitch](https://cdn.glitch.com/2703baf2-b643-4da7-ab91-7ee2a2d00b5b%2Fremix-button.svg)](https://glitch.com/edit/#!/remix/clone-from-repo?REPO_URL=https://github.com/TwilioDevEd/sample-template-django.git) |
-| [Zeit](https://zeit.co/)          | [![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/new/project?template=https://github.com/TwilioDevEd/sample-template-django/tree/master)                                                                 |
+| Service                           |                                                                                                                                                                |
+| :-------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Heroku](https://www.heroku.com/) | [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/TwilioDevEd/sample-template-django/tree/master) |
+
+**Some notes:**
+
+- For Heroku, please [check this](https://devcenter.heroku.com/articles/django-app-configuration) to properly configure the project for deployment.
+- [Glitch](https://glitch.com/) is not included because it only supports NodeJS officially. Instead, you can try [PythonAnywhere](https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/) which is a similar alternative por Python projects.
+- [Zeit Now](https://zeit.co) is also not included because it uses a serverless architecture which doesn't work with frameworks such as Django.
 
 ## Resources
 
