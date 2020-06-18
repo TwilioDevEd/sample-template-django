@@ -129,6 +129,8 @@ That's it!
 
 ### Tests
 
+**NOTE:** Be sure you have Google Chrome installed with the same version as the `chromedriver` installed earlier. Usually it's the latest version. 
+
 You can run the tests locally by typing:
 
 ```bash
