@@ -88,20 +88,20 @@ After the above requirements have been met:
    cd sample-template-django
    ```
 
-1. Create a virtual environment and activate it
+2. Create a virtual environment and activate it
 
    ```bash
    python -m venv venv
    source venv/bin/activate
    ```
 
-1. Install dependencies:
+3. Install dependencies:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-1. Set your environment variables
+4. Set your environment variables
 
    ```bash
    cp .env.example .env
@@ -109,13 +109,19 @@ After the above requirements have been met:
 
    See [Twilio Account Settings](#twilio-account-settings) to locate the necessary environment variables.
 
-1. Configure pre-commit hooks
+5. Configure pre-commit hooks
 
    ```bash
    pre-commit install
    ```
 
-1. Run the application
+6. Apply db migrations (You can use SQLite or set up the connection with you DBMS of preference)
+  
+   ```bash
+   python manage.py migrate
+   ```
+
+7. Run the application
 
    ```bash
    python manage.py runserver
@@ -123,13 +129,13 @@ After the above requirements have been met:
 
    This will start a development server. It will reload whenever you change any files.
 
-1. Navigate to [http://localhost:8000](http://localhost:8000)
+8. Navigate to [http://localhost:8000](http://localhost:8000)
 
 That's it!
 
 ### Tests
 
-**NOTE:** Be sure you have Google Chrome installed with the same version as the `chromedriver` installed earlier. Usually it's the latest version. 
+**NOTE:** Be sure you have Google Chrome installed with the same version as the `chromedriver` installed earlier. Usually it's the latest version.
 
 You can run the tests locally by typing:
 
@@ -141,7 +147,7 @@ python manage.py test
 
 Additionally to trying out this application locally, you can deploy it to a variety of host services. Here is a small selection of them.
 
-Please be aware that some of these might charge you for the usage or might make the source code for this application visible to the public. When in doubt research the respective hosting service first.
+Please be aware that some of these might charge you for the usage or might make the source code for this application visible to the public. When in doubt, research the respective hosting service first.
 
 | Service                           |                                                                                                                                                                |
 | :-------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- |
