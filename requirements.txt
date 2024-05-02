@@ -4,13 +4,13 @@ asgiref==3.4.1
 attrs==19.3.0
 backcall==0.1.0
 black==19.10b0
-certifi==2019.11.28
+certifi==2023.7.22
 cfgv==3.1.0
 chardet==3.0.4
 click==7.1.1
 decorator==4.4.2
 distlib==0.3.0
-Django==3.2.0
+Django==3.2.14
 django-environ==0.4.5
 entrypoints==0.3
 filelock==3.0.12
@@ -37,7 +37,7 @@ pyflakes==2.1.1
 Pygments==2.6.1
 PyJWT==1.7.1
 pytz==2019.3
-PyYAML==5.3
+PyYAML==5.4
 regex==2020.2.20
 requests==2.23.0
 selenium==3.141.0
